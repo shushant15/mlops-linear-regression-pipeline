@@ -97,3 +97,25 @@ After setting up the project, you can run the following scripts:
     ```bash
     pytest test/test_train.py
     ```
+
+
+## Model Comparison
+
+The table below shows how the original scikit-learn Linear Regression model compares with the quantized version, using the actual file sizes from our project:
+
+| Metric           | Original Sklearn Model<br>`unquant_params.joblib` | Quantized Model<br>`quant_params.joblib` |
+|------------------|:-------------------------------------------------:|:----------------------------------------:|
+| **R² Score**     | 0.5758                                            | 0.5754                                   |
+| **Model Size**   | 0.404 KB                                          | 0.356 KB                                 |
+
+**Analysis:**
+
+- **R² Score:**  
+  Both models perform almost identically, with only a tiny difference in the R² score (0.0004). This means the quantization process doesn’t noticeably affect the accuracy of our predictions, which is what we want.
+
+- **Model Size:**  
+  The quantized model (`quant_params.joblib`, 0.356 KB) is slightly smaller than the unquantized model (`unquant_params.joblib`, 0.404 KB). This is because we’ve stored the model weights using a lower-precision data type (`np.uint8`).  
+  However, the size difference is quite small. This is mostly because the model itself is very small, and Python’s way of saving files (serialization) adds a bit of overhead. In much bigger models (like deep learning networks), quantization would have a much bigger impact.
+
+- **Conclusion:**  
+  In this assignment, we showed that quantization can reduce model size without losing accuracy. For small models like this, the effect is limited, but the technique is valuable for deploying large models to environments where storage and memory matter.
