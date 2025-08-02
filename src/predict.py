@@ -3,9 +3,10 @@ import numpy as np
 import os
 import sys
 import warnings
-from src.utils import load_data
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+from src.utils import load_data
+
 warnings.filterwarnings('ignore', category=RuntimeWarning)
 
 def predict():
