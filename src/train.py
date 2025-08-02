@@ -6,8 +6,8 @@ import numpy as np
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import r2_score, mean_squared_error
 from sklearn.preprocessing import StandardScaler
-from src.utils import load_data
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+from src.utils import load_data
 warnings.filterwarnings('ignore', category=RuntimeWarning)
 
 def train_model():
