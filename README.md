@@ -119,3 +119,9 @@ The table below shows how the original scikit-learn Linear Regression model comp
 
 - **Conclusion:**  
   In this assignment, we showed that quantization can reduce model size without losing accuracy. For small models like this, the effect is limited, but the technique is valuable for deploying large models to environments where storage and memory matter.
+
+## Author
+
+Name: Shushant Kumar Tiwari  
+Roll No: G24AI1116  
+Repo: https://github.com/shushant15/mlops-linear-regression-pipeline#
