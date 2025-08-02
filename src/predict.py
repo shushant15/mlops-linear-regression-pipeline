@@ -3,15 +3,12 @@ import numpy as np
 import os
 import sys
 import warnings
-
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-
 from src.utils import load_data
 
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 warnings.filterwarnings('ignore', category=RuntimeWarning)
 
 def predict():
-    """Loads the trained model and makes predictions on the test set."""
     try:
         loaded_artifacts = joblib.load("regression_model.joblib")
         model = loaded_artifacts["model"]
@@ -22,10 +19,8 @@ def predict():
 
     _, X_test, _, _ = load_data()
     
-    # Handle potential NaN/Inf values in test data
     X_test = np.nan_to_num(X_test, nan=0.0, posinf=1e10, neginf=-1e10)
 
-    # Scale the test data using the loaded scaler
     X_test_scaled = scaler.transform(X_test)
 
     predictions = model.predict(X_test_scaled)
